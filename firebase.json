@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/hotel-currencies-and-price-competitiveness-app",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
