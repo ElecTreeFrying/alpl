@@ -1,1 +1,93 @@
-<p style="color:white"p>app-content works!</p>
+
+<mat-card *ngFor="let hotel of (hotels | async) | hotels">
+
+  <mat-card-content>
+    
+    <div class="hotel-card">
+
+      <div class="hotel-photo">
+        <img class="photo" [src]="hotel?.photo" [alt]="hotel?.name">
+        <button mat-raised-button color="primary">Book now</button>
+      </div>
+    
+      <div class="hotel-details">
+        <p class="name">{{ hotel?.name }}</p>
+        <p class="description"[innerHTML]="hotel?.address"></p>
+
+        <div class="information">
+          
+          <div class="left-pane">
+            
+            <div class="ratings">
+              <span>{{ hotel?.rating }}</span>
+            </div>
+  
+            <div class="reviews">
+              <div class="label">Review</div>
+              <div class="stars">
+                <div class="base" [style]="'width:0%' | rating: hotel?.rating">
+                  <span *ngFor="let item of [0,0,0,0,0]">★</span>
+                </div>
+                <div class="colored">
+                  <span *ngFor="let item of [0,0,0,0,0]">★</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          
+          <div class="right-pane">
+            
+            <div class="pricing">
+              
+              <div 
+                class="label" 
+                *ngIf="(hotel?.id | price) | label">
+                From
+              </div>
+
+              <div 
+                class="label" 
+                *ngIf="!((hotel?.id | price) | label)">
+                &nbsp;
+              </div>
+
+              <p 
+                [ngClass]=" ((hotel?.id | price) | label) ? 'price' : 'price-none'">
+                {{ hotel?.id | price }}
+                <mat-icon
+                  matTooltipClass="info"
+                  *ngIf="hotel?.id | taxAndFees: 'hasTaxOrFees'"
+                  [matTooltip]="'Tax and fees inclusive.' + '\nTax: '+ (hotel?.id | taxAndFees: 'tax') + '\nHotel fee: ' + (hotel?.id | taxAndFees: 'hotelFees')">info</mat-icon>
+              </p>
+
+              <div>
+                <s
+                  class="price largest" 
+                  *ngIf="(hotel?.id | price) | label">
+                  {{ (hotel?.id | savings: 'largest') | savings: 'clean' }}
+                </s>
+                <mat-icon
+                  matTooltipClass="info"
+                  *ngIf="hotel?.id | savings: 'hasCompetitors'"
+                  [matTooltip]="hotel?.id | savings: 'competitors'">info</mat-icon>
+              </div>
+              <p
+                class="saved"
+                *ngIf="(hotel?.id | price) | label">
+                {{ hotel?.id | savings: 'saved' }}
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+      
+    </div>
+
+  </mat-card-content>
+
+</mat-card>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 
 import { AppSideOptionsComponent } from '../components/app-side-options/app-side-options.component';
 
@@ -9,7 +10,8 @@ import { AppSideOptionsComponent } from '../components/app-side-options/app-side
     AppSideOptionsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatCardModule,
   ],
   exports: [
     AppSideOptionsComponent

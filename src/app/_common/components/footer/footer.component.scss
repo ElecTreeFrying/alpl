@@ -1,12 +1,16 @@
 
 .content {
   background-color: #7B1FA2;
+  display: block;
   display: flex;
 
   .mat-form-field {
-    margin: 0 20px 0 auto;
+    margin: 8px 20px 8px auto;
     width: 90px;
-    transform: translateY(10px);
+
+    ::ng-deep .mat-form-field-wrapper {
+      padding: 0;
+    }
   }
 
 }

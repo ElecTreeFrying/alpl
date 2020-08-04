@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { ApiService } from '../../services/api.service';
+
 
 @Component({
   selector: 'app-content',
@@ -7,9 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppContentComponent implements OnInit {
 
-  constructor() { }
+  hotels: Observable<any>;
+
+  constructor(
+    private api: ApiService
+  ) { }
 
   ngOnInit(): void {
+    this.hotels = this.api.hotels;
   }
 
 }

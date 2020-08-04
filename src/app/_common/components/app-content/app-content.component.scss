@@ -1,0 +1,143 @@
+
+::ng-deep .info {
+  white-space: pre-line;
+}
+
+.mat-card {
+  margin-bottom: 16px;
+  max-width: 700px;
+}
+
+.hotel-card {
+  display: flex;
+  flex-flow: row wrap;
+
+  .hotel-photo {
+    align-self: flex-start;
+    display: inline-block;
+    width: 200px;
+    margin-right: 8px;
+    
+    img { width: 100%; }
+
+    .mat-raised-button {
+      width: 100%;
+      margin-top: 8px;
+    }
+  }
+  
+  .hotel-details {
+    display: inline-block;
+    width: calc(100% - 200px - 8px);
+
+    .name {
+      font-size: 24px;
+      font-weight: 500; 
+      margin-bottom: 8px;
+    }
+    
+    .description {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255,255,255,.7);
+    }
+  }
+
+  .information {
+    display: flex;
+    flex-flow: row wrap;
+
+    .left-pane {
+      margin-right: auto;
+      display: flex;
+    }
+
+    .right-pane {
+      width: 140px;
+    }
+
+    .label {
+      font-size: 12px;
+      opacity: 0.9;
+    }
+
+    .ratings {
+      display: flex;
+      color: black;
+      background-color: #69f0ae;
+      border-radius: 4px;
+      margin-right: 8px;
+      width: 40px;
+      height: 38px;
+
+      span {
+        margin: auto;
+        font-size: 18px;
+        font-weight: 700;
+      }
+    }
+
+    .reviews, .pricing {
+      transform: translateY(-4px);
+
+      .label {
+        color: rgba(255,255,255,.7);
+      }
+
+      .mat-icon {
+        @extend .label;
+        font-size: 20px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .price {
+        margin-top: 4px;
+        font-size: 24px;
+      }
+
+      .largest {
+        @extend .label;
+        font-size: 16px;
+      }
+      
+      .saved {
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .stars {
+        display: inline-block;
+        unicode-bidi: bidi-override;
+        color: #888888;
+        font-size: 25px;
+        height: 25px;
+        width: auto;
+        margin: 0;
+        position: relative;
+        padding: 0;
+        
+        .base {
+          color: yellow;
+          padding: 0;
+          position: absolute;
+          z-index: 1;
+          display: flex;
+          top: 0;
+          left: 0;
+          overflow: hidden;
+        }
+        
+        .colored {
+          padding: 0;
+          display: flex;
+          z-index: 0;
+        }
+      }
+    }
+  }
+
+}
+

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
 
+import { QService } from '../../services/q.service';
+
 
 @Component({
   selector: 'app-footer',
@@ -11,15 +13,20 @@ export class FooterComponent implements OnInit {
 
   selected: string;
 
-  constructor() { 
-    this.selected = 'usd';
+  constructor(
+    private q: QService
+  ) {
+
+    const session = sessionStorage.getItem('currency');
+    this.selected = !session ? 'usd' : session;
   }
 
   ngOnInit(): void {
   }
 
   changed(select: MatSelectChange) {
-    console.log('selected currency:', select.value);
+    sessionStorage.setItem('currency', select.value);
+    this.q.updateSource('currency', select.value);
   }
 
 }
