@@ -1,0 +1,13 @@
+
+<div class="content">
+  
+  <mat-form-field color="accent"appearance="outline">
+    <mat-label>Currency</mat-label>
+    <mat-select [(value)]="selected" (selectionChange)="changed($event)">
+      <mat-option value="krw">KRW</mat-option>
+      <mat-option value="sgd">SGD</mat-option>
+      <mat-option value="usd">USD</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+</div>

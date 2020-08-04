@@ -1,0 +1,29 @@
+
+app-side-options, app-content {
+  border: 1px solid yellow;
+}
+
+// ------------------------------------------
+
+.app {
+  height: 100%;
+  overflow-y: auto;
+
+  .app-list {
+    padding-top: 24px;
+    
+    .content {
+      display: flex;
+      // min-height: calc(100vh - 64px*2 - 24px);
+    }
+  }
+}
+
+app-side-options {
+  flex-basis: 300px;
+}
+
+app-content {
+  flex-grow: 1;
+  padding-left: 24px;
+}
