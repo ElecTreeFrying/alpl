@@ -4,7 +4,6 @@
 /.vscode
 /.firebase
 /.firebaserc
-*.spec.ts
 
 # environments
 # /src/environments/**
