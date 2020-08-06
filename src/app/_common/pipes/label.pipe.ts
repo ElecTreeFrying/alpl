@@ -1,16 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { QService } from '../services/q.service';
-
 
 @Pipe({
   name: 'label'
 })
 export class LabelPipe implements PipeTransform {
-
-  constructor(
-    private q: QService
-  ) {}
 
   transform(value: any): any {
 

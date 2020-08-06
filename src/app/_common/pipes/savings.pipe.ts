@@ -16,20 +16,20 @@ export class SavingsPipe implements PipeTransform {
 
   transform(value: any, option?: any): any {
 
+    if (!value) return;
+
     const symbol = this.q.access.currencySymbol;
     const current = (<any>this.q.access.currency).find(e => e.id === value);
-
-    if (!value) return;
 
     if (option === 'clean') {
       return value === 'No savings.' ? undefined : value;
     } else if (option === 'hasCompetitors') {
 
-    if (!current) return;
+      if (!current) return;
 
       return current.hasOwnProperty('competitors');
     }
-
+  
     if (current.hasOwnProperty('competitors')) {
       
       if (option === 'competitors') {
@@ -62,10 +62,6 @@ export class SavingsPipe implements PipeTransform {
 
       const saved = largestCompetitorPrice - current.price;
 
-      if (option === 'hasNoSavings' && saved > 1) {
-        return true;
-      }
-
       if (saved < 1) {
         return 'No savings.';
       }
@@ -76,7 +72,10 @@ export class SavingsPipe implements PipeTransform {
 
       } else if (option === 'saved') {
         
-        return `Save ${symbol}${this.toPrice(saved)}`;
+        const percentSaved = Math.floor((saved/largestCompetitorPrice)*100);
+        const displayPSaved = percentSaved > 0 ? `(${percentSaved}%)` : '';
+
+        return `Save ${symbol}${this.toPrice(saved)} ${displayPSaved}`;
 
       }
 
@@ -87,7 +86,7 @@ export class SavingsPipe implements PipeTransform {
 
   }
 
-  toPrice(price: number) {
+  private toPrice(price: number) {
 
     let amount = 0;
     const symbol = this.q.access.currencySymbol;

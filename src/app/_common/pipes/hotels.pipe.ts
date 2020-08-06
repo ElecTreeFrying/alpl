@@ -13,7 +13,7 @@ export class HotelsPipe implements PipeTransform {
     private q: QService
   ) {}
 
-  transform(value: any): any {
+  transform(value: any, option?: string): any {
 
     if (!value || !this.q.access.currency) return;
 

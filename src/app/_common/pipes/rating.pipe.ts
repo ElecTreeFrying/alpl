@@ -6,10 +6,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class RatingPipe implements PipeTransform {
 
-  transform(value: string, rating: number): string {
+  transform(value: number, rating: number): number {
 
-    if (!value) return;
-    return `width:${rating*10}%`;
+    if (typeof value !== 'number') return;
+    return rating*10;
   }
 
 }
