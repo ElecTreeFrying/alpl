@@ -20,11 +20,11 @@ export class ApiService {
     const _default = this.q.$['currency'].pipe(
 
       exhaustMap((currency: any) => {
-        return this.http.get(environment.url.prices[currency].url).pipe(
+        return this.http.get(environment.url2.prices[currency].url).pipe(
           map((res) => {
             return {
               data: res,
-              about: environment.url.prices[currency]
+              about: environment.url2.prices[currency]
             }
           })
         );
@@ -42,7 +42,7 @@ export class ApiService {
   }
 
   get hotels() {
-    return this.http.get(environment.url.data);
+    return this.http.get(environment.url2.data);
   }
   
 }
