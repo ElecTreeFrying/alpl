@@ -33,10 +33,15 @@ export class HotelsPipe implements PipeTransform {
     const leftUpdated = updated.filter((e: any) => e.price);
     const rightUpdated = updated.filter((e: any) => !e.price);
 
-    return intersectionBy(value, leftUpdated, 'id').concat(
+    const transformed = intersectionBy(value, leftUpdated, 'id').concat(
       intersectionBy(value, rightUpdated, 'id')
     );
 
+    if (option === 'forTesting') {
+      return JSON.stringify(transformed);
+    }
+
+    return transformed;
   }
 
 }
